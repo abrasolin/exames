@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>exame</name>
-    <description>Struts 2 Starter</description>
+    <description>Projeto de agenda de exames para o AGE Tecnology</description>
 
     <properties>
         <struts2.version>2.5.14.1</struts2.version>
@@ -49,6 +49,18 @@
             <version>${struts2.version}</version>
         </dependency>
 
+	   <dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-rest-plugin</artifactId>
+			<version>${struts2.version}</version>
+		</dependency>
+
+
         <!-- Servlet & Jsp -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -88,7 +100,7 @@
     </dependencies>
 
     <build>
-        <finalName>struts2-archetype-starter</finalName>
+        <finalName>exame</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

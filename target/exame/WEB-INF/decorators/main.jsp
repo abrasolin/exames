@@ -34,8 +34,8 @@
         </div>
         
         <div id="content" class="clearfix">
-             <div id="main">
-          
+            <div id="main">
+            	<h3>Lista</h3>
             	<decorator:body/>
                 <hr />
             </div>

@@ -2,12 +2,10 @@ package br.com.brasolin.exame;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
-import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 import br.com.brasolin.exame.dao.DaoAgenda;
 import br.com.brasolin.exame.entity.Agenda;
@@ -18,10 +16,6 @@ import br.com.brasolin.exame.entity.Agenda;
 @Conversion()
 public class IndexAction extends ActionSupport {
     
-    private Date now = new Date(System.currentTimeMillis());
-    
-    @TypeConversion(converter = "br.com.brasolin.exame.DateConverter")
-    public Date getDateNow() { return now; }
     
 	private static final long serialVersionUID = 6329394260276112660L;
 	ResultSet rs = null;
@@ -32,7 +26,6 @@ public class IndexAction extends ActionSupport {
     
     
     public String execute() throws Exception {
-        now = new Date(System.currentTimeMillis());
         
         try {
 			agendaLista = new ArrayList<Agenda>();

@@ -18,11 +18,6 @@
 </head>
 <body>
 	
-	            <div>
-            	<h3>Lista</h3>
-                <hr />
-            </div>
-	
 	<a href="novo.action">
 		<button class="button-update">Incluir</button>
 	</a>
@@ -44,10 +39,10 @@
 						<td><s:property value="codigoCliente" /> - <s:property value="nomeCliente" /></td>
 						<td><s:property value="codigoExame" /> - <s:property value="nomeExame" /></td>
 						<td>
-							<a href="alterar.action?submitType=obter&id=<s:property value="id"/>">
+							<a href="updatedetails.action?submitType=updatedata&id=<s:property value="id"/>">
 								<button class="button-update">Alterar</button>
 							</a>
-							<a href="excluir.action?submitType=obter&id=<s:property value="id"/>">
+							<a href="deleterecord.action?id=<s:property value="id"/>">
 								<button class="button-delete">Excluir</button>
 							</a>
 						</td>

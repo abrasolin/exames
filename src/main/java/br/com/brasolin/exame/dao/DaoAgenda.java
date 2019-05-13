@@ -22,7 +22,7 @@ public class DaoAgenda {
 
 	public String incluirAgenda(Agenda agenda) throws SQLException, Exception {
 		try {
-			String sql = "INSERT INTO AGENDA VALUES (?,?,?,?,?)";
+			String sql = "INSERT INTO AGENDA (DATA, CODIGOCLIENTE, NOMECLIENTE, CODIGOEXAME, NOMEEXAME) VALUES (?,?,?,?,?)";
 			PreparedStatement ps = myconnection().prepareStatement(sql);
 			ps.setDate(1, new java.sql.Date(agenda.getData().getTime()));
 			ps.setString(2, agenda.getCodigoCliente());
@@ -57,11 +57,63 @@ public class DaoAgenda {
 			}
 		}
 	}
+	
+	public ResultSet listarAgendaCliente(String codigoCliente) throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT * FROM AGENDA";
+			if (codigoCliente != null && !codigoCliente.equalsIgnoreCase("")) {
+				sql = "SELECT * FROM AGENDA WHERE CODIGOCLIENTE='"+codigoCliente+"'";	
+			}
+			PreparedStatement ps = myconnection().prepareStatement(sql);
+			rs = ps.executeQuery(sql);
+			return rs;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (myconnection() != null) {
+				myconnection().close();
+			}
+		}
+	}
+	
+	
+	
+	public Agenda obterAgenda(Integer id) throws SQLException, Exception {
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT * FROM AGENDA WHERE ID="+id.toString();
+			PreparedStatement ps = myconnection().prepareStatement(sql);
+			rs = ps.executeQuery(sql);
+			Agenda agenda = null;
+			if (rs != null) {
+				agenda = new Agenda();
+				while (rs.next()) {
+					agenda.setId(id);
+					agenda.setCodigoCliente(rs.getString("CODIGOCLIENTE"));
+					agenda.setNomeCliente(rs.getString("NOMECLIENTE"));
+					agenda.setCodigoExame(rs.getString("CODIGOEXAME"));
+					agenda.setNomeExame(rs.getString("NOMEEXAME"));
+					agenda.setData(rs.getDate("DATA"));
+				}
+			}
+			return agenda;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (myconnection() != null) {
+				myconnection().close();
+			}
+		}
+	}
+	
 
 	public String alterarAgenda(Agenda agenda)
 			throws SQLException, Exception {
 		try {
-			String sql = "UPDATE AGENDA SET DATA=?,CODIGOCLIENTE=?,NOMECLIENTE?, CODIGOEXAME=?, NOMEEXAME=? WHERE UEMAIL=?";
+			String sql = "UPDATE AGENDA SET DATA=?,CODIGOCLIENTE=?,NOMECLIENTE=?, CODIGOEXAME=?, NOMEEXAME=? WHERE ID=?";
 			PreparedStatement ps = myconnection().prepareStatement(sql);
 			ps.setDate(1, new java.sql.Date(agenda.getData().getTime()));
 			ps.setString(2, agenda.getCodigoCliente());
@@ -83,9 +135,8 @@ public class DaoAgenda {
 
 	public String excluirAgenda(Integer id) throws SQLException, Exception {
 		try {
-			String sql = "DELETE FROM AGENDA WHERE ID=?";
+			String sql = "DELETE FROM AGENDA WHERE ID="+id.toString();
 			PreparedStatement ps = myconnection().prepareStatement(sql);
-			ps.setInt(1, id);
 			ps.executeUpdate();
 			return "Agenda Excluida com Sucesso";
 		} catch (Exception e) {
