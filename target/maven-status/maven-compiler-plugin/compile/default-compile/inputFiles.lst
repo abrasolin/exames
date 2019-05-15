@@ -1,7 +1,9 @@
+/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/ws/ExameWs.java
+/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/AlterarAction.java
 /Volumes/dados/exames/src/main/java/br/com/brasolin/exame/IncluirAction.java
+/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/ExcluirAction.java
 /Volumes/dados/exames/src/main/java/br/com/brasolin/exame/NovoAction.java
-/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/entity/Agenda.java
 /Volumes/dados/exames/src/main/java/br/com/brasolin/exame/IndexAction.java
-/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/HelloWorldAction.java
+/Volumes/dados/exames/src/main/java/br/com/brasolin/exame/entity/Agenda.java
 /Volumes/dados/exames/src/main/java/br/com/brasolin/exame/DateConverter.java
 /Volumes/dados/exames/src/main/java/br/com/brasolin/exame/dao/DaoAgenda.java

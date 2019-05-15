@@ -14,15 +14,22 @@
 	<s:head />
 </head>
 <body>
+            <div>
+            	<h3>Inclusão</h3>
+                <hr />
+            </div>
+
 	<s:form action="incluir.action" method="post">
 	
 	
-	   <s:date label="Data do Agendamento:" name = "dataExame" format = "dd/MM/yyyy" />
+	   <s:date name = "dataExame" format = "dd/MM/yyyy" />
 	   
-		<s:textfield label="Código do Paciente:" name="codigoCliente" />
-		<s:textfield label="Nome do Paciente:" name="nomeCliente" />
-		<s:textfield label="Código do Exame:" name="codigoExame" />
-		<s:textfield label="Nome do Exame:" name="nomeExame" />
+       <s:textfield label="Data do Agendamento" name="dataExame" value="%{#formattedVal}" key="labelkey" />
+
+		<s:textfield label="Código do Paciente" name="codigoCliente" />
+		<s:textfield label="Nome do Paciente" name="nomeCliente" />
+		<s:textfield label="Código do Exame" name="codigoExame" />
+		<s:textfield label="Nome do Exame" name="nomeExame" />
 		<s:submit cssClass="button" value="Salvar" />
 	</s:form>
 

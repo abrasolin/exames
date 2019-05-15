@@ -5,7 +5,15 @@
 
 <struts>
 
-    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/> 
+
+    <constant name="struts.convention.action.suffix" value="Controller"/>
+    
+    <constant name="struts.convention.action.mapAllMatches" value="true"/>
+    
+    <constant name="struts.convention.default.parent.package" value="rest-default"/>
+    
+    <constant name="struts.convention.package.locators" value="rest"/>
 
     <package name="myPackage" extends="struts-default">
 
@@ -16,13 +24,22 @@
         </action>
 
 		<action name="novo">
-				<result name="ERROR">/WEB-INF/jsp/novo.jsp</result>
-		        <result name="SUCCESS">/WEB-INF/jsp/index.jsp</result>
+		        <result>/WEB-INF/jsp/novo.jsp</result>
 		</action>
 
         <action name="incluir" class="br.com.brasolin.exame.IncluirAction">
-            <result>/WEB-INF/jsp/index.jsp</result>
+           <result type="chain">index</result>
         </action>
+
+		<action name="excluir" class="br.com.brasolin.exame.ExcluirAction">
+		        <result name="success">/WEB-INF/jsp/excluir.jsp</result>
+		        <result name="EXCLUIDO" type="chain">index</result>
+		</action>
+
+		<action name="alterar" class="br.com.brasolin.exame.AlterarAction">
+		        <result name="success">/WEB-INF/jsp/alterar.jsp</result>
+		        <result name="EXCLUIDO" type="chain">index</result>
+		</action>
 
     </package>
 
